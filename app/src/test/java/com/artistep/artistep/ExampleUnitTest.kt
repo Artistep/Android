@@ -1,4 +1,4 @@
-package com.artistep
+package com.artistep.artistep
 
 import org.junit.Test
 
