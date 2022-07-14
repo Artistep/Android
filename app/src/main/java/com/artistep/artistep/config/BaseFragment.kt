@@ -1,4 +1,4 @@
-package Guide.suchelin.config
+package com.artistep.artistep.config
 
 import android.os.Bundle
 import android.view.LayoutInflater
