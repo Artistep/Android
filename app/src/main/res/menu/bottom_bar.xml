@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="film"
+        android:id="@+id/bottom_nav_film"
+        android:icon="@drawable/selector_film"/>
+    <item
+        android:title="zoomin"
+        android:id="@+id/bottom_nav_zoomin"
+        android:icon="@drawable/selector_zoomin"/>
+    <item
+        android:title="globe"
+        android:id="@+id/bottom_nav_globe"
+        android:icon="@drawable/selector_globe"/>
+    <item
+        android:title="crosshair"
+        android:id="@+id/bottom_nav_crosshair"
+        android:icon="@drawable/selector_crosshair"/>
+    <item
+        android:title="selector_home"
+        android:id="@+id/bottom_nav_home"
+        android:icon="@drawable/selector_home"/>
+</menu>
