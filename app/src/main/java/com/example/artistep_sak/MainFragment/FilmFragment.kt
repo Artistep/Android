@@ -2,6 +2,7 @@ package com.example.artistep_sak.MainFragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -26,11 +27,14 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //버튼추가
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
         for(i in 1 until 100){
             prepareVideoList()
         }
@@ -38,8 +42,6 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
         mAdapter = FilmAdapter(mediaObjectList, initGlide())
         mRecyclerView!!.adapter = mAdapter
         mRecyclerView!!.smoothScrollToPosition(1)
-//        binding.exoPlayerRecyclerView.layoutManager = LinearLayoutManager(context)
-//        binding.exoPlayerRecyclerView.adapter = FilmAdapter(mediaObjectList,initGlide())
         binding.exoPlayerRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -75,18 +77,6 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
         return Glide.with(this)
             .setDefaultRequestOptions(options)
     }
-    //    private fun getMoreData() {
-//        mediaObjectList.add(mediaObject)
-//        binding.exoPlayerRecyclerView.adapter?.notifyItemInserted(mediaObjectList.size - 1)
-//        mediaObjectList.removeAt(mediaObjectList.size - 1)
-//        val currentSize = mediaObjectList.size
-//
-//               for(i in currentSize+1 until currentSize+10){
-//            mediaObjectList.add(mediaObject)
-//        }
-//        binding.exoPlayerRecyclerView.adapter?.notifyDataSetChanged()
-//        isLoading = false
-//    }
     private fun prepareVideoList() {
         val mediaObject = MediaObject()
         mediaObject.id = 1
@@ -95,7 +85,7 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
         mediaObject.coverUrl =
             "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
         mediaObject.url =
-            "https://s3.ca-central-1.amazonaws.com/codingwithmitch/media/VideoPlayerRecyclerView/Sending+Data+to+a+New+Activity+with+Intent+Extras.mp4"
+            "https://thumbs.gfycat.com/FoolhardyMiserlyAsiantrumpetfish-mobile.mp4"
         val mediaObject2 = MediaObject()
         mediaObject2.id = 2
         mediaObject2.userHandle = "user 2"
@@ -103,7 +93,7 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
         mediaObject2.coverUrl =
             "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
         mediaObject2.url =
-            "https://s3.ca-central-1.amazonaws.com/codingwithmitch/media/VideoPlayerRecyclerView/Sending+Data+to+a+New+Activity+with+Intent+Extras.mp4"
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"
         val mediaObject3 = MediaObject()
         mediaObject3.id = 3
         mediaObject3.userHandle = "User 3"

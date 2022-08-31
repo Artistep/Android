@@ -83,7 +83,7 @@ class ExoPlayerRecyclerView : RecyclerView {
         videoSurfaceDefaultHeight = point.x
         screenDefaultHeight = point.y
         videoSurfaceView = PlayerView(this.context)
-        videoSurfaceView!!.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+        videoSurfaceView!!.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
         val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
         val videoTrackSelectionFactory: TrackSelection.Factory =
             AdaptiveTrackSelection.Factory(bandwidthMeter)

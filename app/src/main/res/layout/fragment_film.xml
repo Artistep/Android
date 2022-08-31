@@ -25,7 +25,9 @@
             android:src="@drawable/group371"
             android:layout_gravity="center"/>
     </androidx.appcompat.widget.Toolbar>
-
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <com.example.exoplayer.utils.ExoPlayerRecyclerView
         android:id="@+id/exoPlayerRecyclerView"
         android:layout_width="match_parent"
@@ -33,4 +35,5 @@
         android:background="#dedede"
         android:dividerHeight="8dp"
         />
+    </FrameLayout>
 </LinearLayout>
