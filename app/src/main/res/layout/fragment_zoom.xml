@@ -6,84 +6,130 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
+    android:paddingLeft="18dp"
+    android:paddingTop="16dp"
+    android:paddingRight="18dp"
     tools:context=".page2.ZoomFragment">
 
+    <ImageView
+        android:id="@+id/page2_iv_box"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/rectangle_page2"
+        app:layout_constraintBottom_toTopOf="@+id/page2_tv_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/page2_tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/notosanskrbold"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/page2_text3"
+        android:textAppearance="@style/page2_text1"
+        app:layout_constraintBottom_toTopOf="@id/page2_tv_4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/page2_tv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/page2_text4"
+        android:textAppearance="@style/page2_text2"
+        app:layout_constraintBottom_toTopOf="@+id/page2_et_1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/page2_et_1"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/pill"
+        android:fontFamily="@font/notosanskrmedium"
+        android:gravity="center"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/page2_edittext1"
+        android:textAppearance="@style/page2_edittext1"
+        android:translationY="-0.86sp"
+        app:layout_constraintBottom_toTopOf="@id/some_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/some_id"
-        android:layout_width="107dp"
-        android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="407dp"
-        android:layout_marginRight="235dp"
-        android:layout_marginBottom="232dp"
-        android:gravity="top"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/notosanskrbold"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/page2_text1"
+        android:textAppearance="@style/page2_text1"
+        app:layout_constraintBottom_toTopOf="@+id/page2_tv_2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/page2_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/page2_text2"
+        android:textAppearance="@style/page2_text2"
+        app:layout_constraintBottom_toTopOf="@id/frame_1430"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageView
         android:id="@+id/frame_1430"
         android:layout_width="159dp"
         android:layout_height="74dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="482dp"
-        android:layout_marginRight="183dp"
+        android:layout_marginRight="6dp"
         android:layout_marginBottom="11dp"
         android:background="@drawable/frame_1430"
         app:layout_constraintBottom_toTopOf="@+id/frame_1427"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/frame_1436"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frame_1427"
         android:layout_width="159dp"
         android:layout_height="74dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="567dp"
-        android:layout_marginRight="183dp"
+        android:layout_marginRight="6dp"
         android:layout_marginBottom="21dp"
         android:background="@drawable/frame_1427"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/frame_1433"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frame_1436"
         android:layout_width="159dp"
         android:layout_height="74dp"
-        android:layout_marginLeft="183dp"
-        android:layout_marginTop="482dp"
-        android:layout_marginRight="18dp"
         android:layout_marginBottom="11dp"
         android:background="@drawable/frame_1436"
         app:layout_constraintBottom_toTopOf="@+id/frame_1433"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frame_1433"
         android:layout_width="159dp"
         android:layout_height="74dp"
-        android:layout_marginLeft="183dp"
-        android:layout_marginTop="567dp"
-        android:layout_marginRight="18dp"
         android:layout_marginBottom="21dp"
         android:background="@drawable/frame_1433"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
