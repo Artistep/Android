@@ -96,20 +96,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_volume_on"
         />
-    <ImageView
-        android:id="@+id/ivHeartBtn"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/arrowright"
-        android:layout_gravity="left|bottom"/>
 
-    <ImageView
-        android:id="@+id/ivTextBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/arrowright"
-        app:layout_constraintEnd_toEndOf="@+id/ivHeartBtn"
-        />
   </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,24 +1,28 @@
 package com.example.artistep_sak.MainFragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
-import com.example.artistep_sak.Config_BInding.BaseFragment
+
 import com.example.artistep_sak.R
 import com.example.artistep_sak.databinding.FragmentFilmBinding
 import com.example.exoplayer.model.MediaObject
 import com.example.exoplayer.utils.ExoPlayerRecyclerView
 import java.util.ArrayList
 
-class FilmFragment : BaseFragment<FragmentFilmBinding>(
-    FragmentFilmBinding::bind,
-    R.layout.fragment_film
-) {
+class FilmFragment : Fragment(){
+
+    private  var _binding:FragmentFilmBinding?=null
+    private val binding get()=_binding!!
+
     var mRecyclerView: ExoPlayerRecyclerView? = null
     private val mediaObjectList = ArrayList<MediaObject>()
     private var mAdapter: FilmAdapter? = null
@@ -27,10 +31,14 @@ class FilmFragment : BaseFragment<FragmentFilmBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //버튼추가
-
     }
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFilmBinding.inflate(inflater, container, false)
+        return binding.root
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()

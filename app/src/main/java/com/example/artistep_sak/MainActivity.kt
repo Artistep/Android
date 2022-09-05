@@ -6,19 +6,26 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import com.example.artistep_sak.Config_BInding.BaseActivity
 import com.example.artistep_sak.MainFragment.FilmFragment
 import com.example.artistep_sak.SecondFragment.ZoomInFragment
 import com.example.artistep_sak.databinding.ActivityMainBinding
 import com.example.exoplayer.utils.ExoPlayerRecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+class MainActivity : AppCompatActivity() {
+
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
     private var container = -1
+
     var mRecyclerView: ExoPlayerRecyclerView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         container = binding.mainContainer.id
+
+        setContentView(binding.root)
 
         val bottomBar = binding.bottomNav
         supportFragmentManager.beginTransaction().replace(container, FilmFragment())
@@ -47,4 +54,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
         return true
     }
+
+
 }
