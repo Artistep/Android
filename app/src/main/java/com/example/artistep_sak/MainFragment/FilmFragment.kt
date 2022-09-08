@@ -1,9 +1,11 @@
 package com.example.artistep_sak.MainFragment
 
+import android.content.ContentValues.TAG
+import android.media.MediaMetadataRetriever
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +22,8 @@ import java.util.ArrayList
 
 class FilmFragment : Fragment(){
 
+
+    //썸네일,사이즈 추출 라이브러리 MediaMetaDataRetriever
     private  var _binding:FragmentFilmBinding?=null
     private val binding get()=_binding!!
 
@@ -27,6 +31,7 @@ class FilmFragment : Fragment(){
     private val mediaObjectList = ArrayList<MediaObject>()
     private var mAdapter: FilmAdapter? = null
     var isLoading = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +42,34 @@ class FilmFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFilmBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.title_bar, menu)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
-        for(i in 1 until 100){
+        //Video Size 추출
+//        val retriever = MediaMetadataRetriever()
+//        retriever.setDataSource(Uri.parse("https://thumbs.gfycat.com/FoolhardyMiserlyAsiantrumpetfish-mobile.mp4").toString(), HashMap<String,String>())
+//        val originWidth = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
+//        val originHeight= retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
+//        retriever.setDataSource(Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4").toString(), HashMap<String,String>())
+//        val originWidth1 = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
+//        val originHeight1= retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
+//        retriever.release()
+//
+//        Log.d(TAG, "playVideo: size: $originWidth")
+//        Log.d(TAG, "playVideo: size: $originHeight")
+//
+//        Log.d(TAG, "playVideo: size: $originWidth1")
+//        Log.d(TAG, "playVideo: size: $originHeight1")
+        for(i in 1 until 10){
             prepareVideoList()
         }
+
         mRecyclerView!!.setMediaObjects(mediaObjectList)
         mAdapter = FilmAdapter(mediaObjectList, initGlide())
         mRecyclerView!!.adapter = mAdapter
@@ -86,14 +110,19 @@ class FilmFragment : Fragment(){
             .setDefaultRequestOptions(options)
     }
     private fun prepareVideoList() {
+//        Video Size Export
+
         val mediaObject = MediaObject()
+        //Test 세로로 긴영상
         mediaObject.id = 1
         mediaObject.userHandle = "User 1"
-        mediaObject.title = "Item 1"
+        mediaObject.title = "세로 1"
         mediaObject.coverUrl =
             "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
         mediaObject.url =
             "https://thumbs.gfycat.com/FoolhardyMiserlyAsiantrumpetfish-mobile.mp4"
+
+        //가로로 긴영상
         val mediaObject2 = MediaObject()
         mediaObject2.id = 2
         mediaObject2.userHandle = "user 2"
@@ -102,34 +131,8 @@ class FilmFragment : Fragment(){
             "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
         mediaObject2.url =
             "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"
-        val mediaObject3 = MediaObject()
-        mediaObject3.id = 3
-        mediaObject3.userHandle = "User 3"
-        mediaObject3.title = "Item 3"
-        mediaObject3.coverUrl =
-            "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
-        mediaObject3.url =
-            "https://s3.ca-central-1.amazonaws.com/codingwithmitch/media/VideoPlayerRecyclerView/Sending+Data+to+a+New+Activity+with+Intent+Extras.mp4"
-        val mediaObject4 = MediaObject()
-        mediaObject4.id = 4
-        mediaObject4.userHandle = "User 4"
-        mediaObject4.title = "Item 4"
-        mediaObject4.coverUrl =
-            "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
-        mediaObject4.url =
-            "https://s3.ca-central-1.amazonaws.com/codingwithmitch/media/VideoPlayerRecyclerView/Sending+Data+to+a+New+Activity+with+Intent+Extras.mp4"
-        val mediaObject5 = MediaObject()
-        mediaObject5.id = 5
-        mediaObject5.userHandle = "User 5"
-        mediaObject5.title = "Item 5"
-        mediaObject5.coverUrl =
-            "https://www.muscleandfitness.com/wp-content/uploads/2019/04/7-Demonized-BodyBuilding-Food-Gallery.jpg?w=940&h=529&crop=1"
-        mediaObject5.url =
-            "https://s3.ca-central-1.amazonaws.com/codingwithmitch/media/VideoPlayerRecyclerView/Sending+Data+to+a+New+Activity+with+Intent+Extras.mp4"
+
         mediaObjectList.add(mediaObject)
         mediaObjectList.add(mediaObject2)
-        mediaObjectList.add(mediaObject3)
-        mediaObjectList.add(mediaObject4)
-        mediaObjectList.add(mediaObject5)
     }
 }

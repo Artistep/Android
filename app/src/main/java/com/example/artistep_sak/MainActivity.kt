@@ -11,6 +11,7 @@ import com.example.artistep_sak.SecondFragment.ZoomInFragment
 import com.example.artistep_sak.databinding.ActivityMainBinding
 import com.example.exoplayer.utils.ExoPlayerRecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_film.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,10 +23,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
 
         container = binding.mainContainer.id
 
-        setContentView(binding.root)
+
 
         val bottomBar = binding.bottomNav
         supportFragmentManager.beginTransaction().replace(container, FilmFragment())
@@ -38,7 +41,10 @@ class MainActivity : AppCompatActivity() {
             Log.d("Main", "menu reselected")
         }
     }
-
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.title_bar, menu)
+        return true
+    }
     private fun getFragment(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.bottom_nav_film -> {

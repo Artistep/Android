@@ -11,20 +11,17 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/black"
         app:titleTextColor="@color/white"
-        app:layout_constraintTop_toTopOf="@+id/exoPlayerRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/main_container"
         app:menu="@menu/title_bar"
         >
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrowright"
-            android:layout_gravity="left"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:src="@drawable/group371"
             android:layout_gravity="center"/>
+
     </androidx.appcompat.widget.Toolbar>
+
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
@@ -36,4 +33,5 @@
         android:dividerHeight="8dp"
         />
     </FrameLayout>
+
 </LinearLayout>

@@ -6,27 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/black"
-        app:titleTextColor="@color/white"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toTopOf="@+id/main_container"
-        app:menu="@menu/title_bar"
-        >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrowright"
-            android:layout_gravity="left"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/group371"
-            android:layout_gravity="center"/>
-    </androidx.appcompat.widget.Toolbar>
+
 
 
     <androidx.fragment.app.FragmentContainerView

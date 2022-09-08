@@ -2,39 +2,34 @@ package com.example.exoplayer.utils
 
 import android.content.Context
 import android.graphics.Point
-import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.ProgressBar
-import android.widget.FrameLayout
-import com.google.android.exoplayer2.ui.PlayerView
-import com.example.exoplayer.model.MediaObject
-import com.bumptech.glide.RequestManager
 import android.view.View
-import android.view.WindowManager
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
-import com.google.android.exoplayer2.upstream.BandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
-import com.google.android.exoplayer2.trackselection.TrackSelection
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
-import com.google.android.exoplayer2.trackselection.TrackSelector
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.source.TrackGroupArray
-import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.source.MediaSource
-
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.ProgressBar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import com.example.artistep_sak.MainFragment.PlayerViewHolder
 import com.example.artistep_sak.R
+import com.example.exoplayer.model.MediaObject
 import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.source.TrackGroupArray
+import com.google.android.exoplayer2.source.hls.HlsMediaSource
+import com.google.android.exoplayer2.trackselection.*
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection.*
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.*
 import com.google.android.exoplayer2.util.Util
 import java.util.*
+
 
 class ExoPlayerRecyclerView : RecyclerView {
     /**
@@ -48,6 +43,7 @@ class ExoPlayerRecyclerView : RecyclerView {
     private var mediaContainer: FrameLayout? = null
     private var videoSurfaceView: PlayerView? = null
     private var videoPlayer: SimpleExoPlayer? = null
+
 
     /**
      * variable declaration
@@ -73,7 +69,9 @@ class ExoPlayerRecyclerView : RecyclerView {
         init(context)
     }
 
+
     private fun init(context: Context) {
+
         this.myContext = context.applicationContext
         val display = (Objects.requireNonNull(
             getContext().getSystemService(Context.WINDOW_SERVICE)
@@ -83,18 +81,13 @@ class ExoPlayerRecyclerView : RecyclerView {
         videoSurfaceDefaultHeight = point.x
         screenDefaultHeight = point.y
         videoSurfaceView = PlayerView(this.context)
-        videoSurfaceView!!.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
-        val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
-        val videoTrackSelectionFactory: TrackSelection.Factory =
-            AdaptiveTrackSelection.Factory(bandwidthMeter)
-        val trackSelector: TrackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
+        videoSurfaceView!!.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FILL
 
-        //Create the player using ExoPlayerFactory
-        videoPlayer = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
+        videoPlayer = SimpleExoPlayer.Builder(this.context).build()
         // Disable Player Control
-        videoSurfaceView!!.useController = false
+        videoSurfaceView?.useController = false
         // Bind the player to the view.
-        videoSurfaceView!!.setPlayer(videoPlayer)
+        videoSurfaceView?.player = videoPlayer
         // Turn on Volume
         setVolumeControl(VolumeState.ON)
         addOnScrollListener(object : OnScrollListener() {
@@ -128,13 +121,8 @@ class ExoPlayerRecyclerView : RecyclerView {
                 }
             }
         })
-        videoPlayer!!.addListener(object : Player.EventListener {
-            override fun onTimelineChanged(timeline: Timeline, manifest: Any?, reason: Int) {}
-            override fun onTracksChanged(
-                trackGroups: TrackGroupArray,
-                trackSelections: TrackSelectionArray
-            ) {
-            }
+        videoPlayer!!.addListener(object : Player.Listener {
+            override fun onTimelineChanged(timeline: Timeline, reason: Int) {}
 
             override fun onLoadingChanged(isLoading: Boolean) {}
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
@@ -167,7 +155,7 @@ class ExoPlayerRecyclerView : RecyclerView {
 
             override fun onRepeatModeChanged(repeatMode: Int) {}
             override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
-            override fun onPlayerError(error: ExoPlaybackException) {}
+            override fun onPlayerError(error: PlaybackException) {}
             override fun onPositionDiscontinuity(reason: Int) {}
             override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
             override fun onSeekProcessed() {}
@@ -242,9 +230,9 @@ class ExoPlayerRecyclerView : RecyclerView {
         )
         val mediaUrl = mediaObjects[targetPosition].url
         if (mediaUrl != null) {
-            val videoSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(mediaUrl))
-            videoPlayer!!.prepare(videoSource)
+            val MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(MediaItem.fromUri(mediaUrl))
+            videoPlayer!!.prepare(MediaSource)
             videoPlayer!!.playWhenReady = true
         }
     }
