@@ -13,7 +13,9 @@
         <entry key="app/src/main/res/drawable/rectangle_page2.xml" value="0.19" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.29585292860196666" />
+        <entry key="app/src/main/res/layout/fragment_film.xml" value="0.1513467293715263" />
         <entry key="app/src/main/res/layout/fragment_zoom.xml" value="0.3376831054687499" />
+        <entry key="app/src/main/res/layout/item_film.xml" value="0.1513467293715263" />
       </map>
     </option>
   </component>

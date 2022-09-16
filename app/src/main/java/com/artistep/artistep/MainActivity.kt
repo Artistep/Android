@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.artistep.artistep.databinding.ActivityMainBinding
+import com.artistep.artistep.page1.FilmFragment
 import com.artistep.artistep.page2.ZoomFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         container = binding.mainContainer.id
 
         val bottomBar = binding.bottomNav
-        supportFragmentManager.beginTransaction().replace(container, ZoomFragment()).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(container, FilmFragment()).commitAllowingStateLoss()
 
         bottomBar.setOnItemSelectedListener {
             getFragment(it)
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
     private fun getFragment(menuItem: MenuItem): Boolean {
         when(menuItem.itemId){
             R.id.bottom_bar_film -> {
+                supportFragmentManager.beginTransaction().replace(container, FilmFragment()).commitAllowingStateLoss()
+            }
+            R.id.bottom_bar_zoomin -> {
                 supportFragmentManager.beginTransaction().replace(container, ZoomFragment()).commitAllowingStateLoss()
             }
             else -> {
